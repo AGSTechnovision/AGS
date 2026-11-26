@@ -1,0 +1,111 @@
+.prep-comparison {
+  width: min(100% - 40px, 1100px);
+  margin-inline: auto;
+  padding: clamp(1.75rem, 5vw, 4rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+  color: #e6edf8;
+}
+.prep-comparison h2 {
+  margin: 0;
+  color: #fff4d7;
+  font: 800 clamp(.875rem, 4.5vw, 3.35rem)/1.15 Manrope, "DM Sans", sans-serif;
+  letter-spacing: -.04em;
+  white-space: nowrap;
+}
+.prep-comparison h2 em {
+  display: inline-block;
+  padding: .02em .18em .06em;
+  border: 1px solid #f7cf798c;
+  border-radius: .18em;
+  background: linear-gradient(145deg, #e7b75438, #b67c1422);
+  color: #ffdf91;
+  font-style: normal;
+  text-shadow: 0 0 .5em #f4c76b45;
+}
+.comparison-heading-label {
+  display: inline;
+  margin-inline-start: .32em;
+  color: #d9e5f6;
+  font-size: .58em;
+  letter-spacing: .055em;
+}
+.comparison-intro { margin: .7rem 0 1.6rem; line-height: 1.55; }
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.comparison-card {
+  --accent: #ffb6ba;
+  --tint: #6b263d;
+  --cap: #b82437;
+  --fluid: linear-gradient(#edbd5c 0 58%, #d44748 61%, #82172a);
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  padding: clamp(.9rem, 2.5vw, 1.4rem);
+  border: 1px solid #eff6ff30;
+  border-top: 3px solid var(--accent);
+  border-radius: 16px;
+  background: linear-gradient(155deg, var(--tint), #08172e 40%);
+}
+.comparison-gfc {
+  --accent: #f8d581;
+  --tint: #65491e;
+  --cap: #bb8020;
+  --fluid: linear-gradient(#ffcf58, #e59c28 65%, #ffe5a3);
+}
+.comparison-exos {
+  --accent: #b9ddff;
+  --tint: #234770;
+  --cap: #152747;
+  --fluid: linear-gradient(#f3cc70, #dfb856 60%, #fff3cf);
+}
+.comparison-card header { padding: .2rem 0 1.15rem; text-align: center; }
+.comparison-card h3 {
+  margin: 0;
+  color: var(--accent);
+  font: 800 clamp(1.45rem, 3vw, 2.1rem)/1.15 Manrope, "DM Sans", sans-serif;
+}
+.comparison-card header p { margin: .38rem 0 0; color: #edf2fa; line-height: 1.4; }
+.comparison-tube {
+  position: relative;
+  display: block;
+  width: 36px;
+  height: 80px;
+  margin: .2rem auto .9rem;
+  border: 2px solid #e9eff3b0;
+  border-radius: 8px 8px 17px 17px;
+  background: linear-gradient(90deg, #ffffff33, #ffffff06 35%, #ffffff16);
+}
+.comparison-tube::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: -2px -6px auto;
+  height: 22px;
+  border: 1px solid #ffffff65;
+  border-radius: 6px 6px 4px 4px;
+  background: repeating-linear-gradient(90deg, #fff2 0 1px, transparent 1px 4px), var(--cap);
+}
+.comparison-tube > span {
+  position: absolute;
+  inset: 31px 3px 3px;
+  border-radius: 2px 2px 13px 13px;
+  background: var(--fluid);
+}
+.comparison-card dl { display: grid; gap: 0; margin: 0; }
+.comparison-card dl > div { padding: .9rem 0; border-top: 1px solid #eef4ff2b; }
+.comparison-card dl > div:last-child { padding-bottom: .35rem; }
+.comparison-card dt { color: var(--accent); font-weight: 800; }
+.comparison-card dd { margin: .35rem 0 0; line-height: 1.55; }
+@media (min-width: 761px) {
+  .comparison-card { grid-row: span 4; grid-template-rows: subgrid; }
+  .comparison-card dl { grid-row: span 3; grid-template-rows: subgrid; }
+  .comparison-grid { column-gap: 14px; row-gap: 0; }
+}
+@media (max-width: 760px) {
+  .comparison-grid { grid-template-columns: 1fr; }
+  .comparison-card header { display: grid; grid-template-columns: 50px 1fr; column-gap: 1rem; text-align: left; }
+  .comparison-card h3 { align-self: end; }
+  .comparison-tube { grid-row: span 2; margin: .15rem auto 0; }
+}

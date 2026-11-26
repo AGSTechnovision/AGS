@@ -1,0 +1,38 @@
+.about-nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: .48rem .9rem;
+  border: 1px solid #f4d47788;
+  border-radius: 999px;
+  background: #0a1a32;
+  color: #ffe0a0;
+  font: 800 .84rem/1.25 Manrope, "DM Sans", sans-serif;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.about-nav-link:hover, .about-nav-link[aria-current="page"] {
+  background: #f4d477;
+  color: #0a1a32;
+}
+.about-nav-link:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.about-top-actions { display: flex; align-items: center; gap: 1.2rem; }
+@media (max-width: 850px) {
+  .ortho-nav .nav-right > span:first-child,
+  .exo-nav .nav-right > span:first-child { display: none; }
+  .ortho-nav .nav-right, .exo-nav .nav-right {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: .45rem;
+  }
+  .ortho-nav .nav-back, .exo-nav .nav-back { margin: 0; }
+}
+@media (max-width: 390px) {
+  .about-nav-link { padding-inline: .65rem; font-size: .76rem; }
+  .topbar .wordmark { gap: 7px; font-size: .86rem; }
+  .topbar .brand-logo { width: 32px; height: 32px; }
+}

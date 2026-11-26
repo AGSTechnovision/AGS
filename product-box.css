@@ -1,0 +1,99 @@
+.box-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 510px);
+  min-width: 0;
+  height: clamp(265px, 42vw, 415px);
+  container-type: inline-size;
+  perspective: 900px;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+.box-stage.is-dragging { cursor: grabbing; }
+.box-stage:focus-visible { outline: 2px solid var(--gold-light); outline-offset: -4px; }
+.box-stage::before {
+  content: "";
+  position: absolute;
+  width: 75%;
+  height: 30px;
+  bottom: 16%;
+  border-radius: 50%;
+  background: #0009;
+  filter: blur(15px);
+}
+.box-3d {
+  --box-w: min(370px, 78vw);
+  --box-w: min(390px, 80cqw);
+  --box-h: calc(var(--box-w) * var(--box-height, 560) / 900);
+  --box-d: calc(var(--box-w) * var(--box-depth, 190) / 900);
+  position: relative;
+  width: var(--box-w);
+  height: var(--box-h);
+  transform-style: preserve-3d;
+  transform: rotateX(-17deg) rotateY(-30deg);
+}
+.box-face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background: #393637 center / 100% 100% no-repeat;
+  backface-visibility: hidden;
+}
+.box-front, .box-back { width: var(--box-w); height: var(--box-h); }
+.box-top, .box-bottom { width: var(--box-w); height: var(--box-d); }
+.box-left, .box-right { width: var(--box-d); height: var(--box-h); }
+.box-front {
+  transform: translateZ(calc(var(--box-d) / 2));
+}
+.box-back {
+  transform: rotateY(180deg) translateZ(calc(var(--box-d) / 2));
+}
+.box-right {
+  transform: rotateY(90deg) translateZ(calc(var(--box-w) / 2));
+}
+.box-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--box-w) / 2));
+}
+.box-top {
+  transform: rotateX(90deg) translateZ(calc(var(--box-h) / 2));
+}
+.box-bottom {
+  transform: rotateX(-90deg) translateZ(calc(var(--box-h) / 2));
+}
+.box-hint {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  max-width: calc(100% - 16px);
+  padding: 7px 13px;
+  border: 1px solid #efd38a55;
+  border-radius: 999px;
+  background: #101a2def;
+  color: #ffe9b1;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+}
+@media (max-width: 850px) {
+  .hero-product.box-product { margin-top: 12px; padding-bottom: 28px; }
+}
+.osteogen-box {
+  --box-height: 525;
+  --box-depth: 170;
+}
+.exozen-box .box-front { background-image: url('assets/exozen-box/front.png'); }
+.exozen-box .box-back { background-image: url('assets/exozen-box/back.png'); }
+.exozen-box .box-right { background-image: url('assets/exozen-box/end-a.png'); }
+.exozen-box .box-left { background-image: url('assets/exozen-box/end-b.png'); }
+.exozen-box .box-top { background-image: url('assets/exozen-box/top.png'); }
+.exozen-box .box-bottom { background-image: url('assets/exozen-box/long-side.png'); }
+.osteogen-box .box-front { background-image: url('assets/osteogen-box/front.png'); }
+.osteogen-box .box-back { background-image: url('assets/osteogen-box/back.png'); }
+.osteogen-box .box-right { background-image: url('assets/osteogen-box/end-a.png'); }
+.osteogen-box .box-left { background-image: url('assets/osteogen-box/end-b.png'); }
+.osteogen-box .box-top { background-image: url('assets/osteogen-box/top.png'); }
+.osteogen-box .box-bottom { background-image: url('assets/osteogen-box/long-side.png'); }

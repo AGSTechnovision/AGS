@@ -1,0 +1,142 @@
+.brochure-trigger {
+  position: relative;
+  z-index: 2;
+  min-height: 48px;
+  touch-action: manipulation;
+  margin: 18px auto 28px;
+  padding: 12px 20px;
+  border: 1px solid #e6bc69;
+  border-radius: 999px;
+  background: #271d18;
+  color: #ffe4a8;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.brochure-trigger:hover { background: #3e2d20; }
+.box-product .product-glow { pointer-events: none; }
+html.brochure-open, html.brochure-open body { overflow: hidden; }
+.brochure-viewer {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #fff0cf;
+  background: radial-gradient(ellipse at 50% 48%, #453529, #1b1514 78%);
+}
+.brochure-viewer[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+.brochure-toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px clamp(10px, 3vw, 32px);
+  border-bottom: 1px solid #efd38a35;
+  background: #211916;
+}
+.brochure-toolbar h2 { flex: 1; margin: 0; font-size: clamp(15px, 2.4vw, 22px); }
+.brochure-zoom { display: flex; gap: 4px; }
+.brochure-viewer button {
+  min-width: 36px;
+  min-height: 42px;
+  padding: 4px 8px;
+  border: 1px solid #bb9865;
+  border-radius: 10px;
+  color: inherit;
+  background: #32251edb;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.brochure-viewer button:hover:not(:disabled) { background: #513b2a; }
+.brochure-viewer button:disabled { opacity: .35; cursor: default; }
+.brochure-viewer button:focus-visible, .brochure-trigger:focus-visible {
+  outline: 2px solid #ffe0a1;
+  outline-offset: 3px;
+}
+.brochure-viewer .brochure-close { margin-left: 2px; font-size: 24px; }
+.brochure-stage { position: relative; min-height: 0; }
+.brochure-scroll {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  container-type: size;
+}
+.brochure-mat {
+  --page: min(calc((100vw - 88px) / 2), calc((100vh - 150px) * 0.707));
+  --leaf: calc(var(--page) * var(--zoom, 1));
+  display: grid;
+  place-items: center;
+  width: max(100%, calc(var(--leaf) * 2 + 88px));
+  height: max(100%, calc(var(--leaf) / 0.707 + 32px));
+}
+@supports (width: 1cqw) and (height: 1cqh) {
+  .brochure-mat {
+    --page: min(calc((100cqw - 88px) / 2), calc((100cqh - 32px) * 0.707));
+  }
+}
+.brochure-book {
+  width: calc(var(--leaf) * 2);
+  height: calc(var(--leaf) / 0.707);
+  position: relative;
+  perspective: 1700px;
+  transition: transform 620ms ease-in-out;
+}
+.brochure-book[data-spread="0"] { transform: translateX(-25%); }
+.brochure-book[data-spread="2"] { transform: translateX(25%); }
+.brochure-leaf {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 620ms ease-in-out;
+}
+.brochure-leaf.is-turned { transform: rotateY(-180deg); }
+.brochure-leaf.is-turning { z-index: 3; }
+.brochure-book[data-spread="0"] .brochure-leaf:first-child,
+.brochure-book[data-spread="2"] .brochure-leaf:last-child { z-index: 2; }
+.brochure-leaf img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #f8f1e4;
+  box-shadow: 0 3px 16px #0005;
+  backface-visibility: hidden;
+}
+.brochure-leaf .brochure-back { transform: rotateY(180deg); }
+.brochure-viewer .brochure-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28px;
+  line-height: 1;
+}
+@media (max-width: 650px) {
+  .brochure-viewer button { min-width: 44px; min-height: 44px; touch-action: manipulation; }
+  .brochure-toolbar { gap: 6px; }
+}
+.brochure-prev { left: 5px; }
+.brochure-next { right: 5px; }
+.brochure-status { padding: 6px 12px 9px; text-align: center; font-size: 14px; }
+@media (prefers-reduced-motion: reduce) {
+  .brochure-book, .brochure-leaf { transition: none; }
+}

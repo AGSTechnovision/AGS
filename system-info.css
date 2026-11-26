@@ -1,0 +1,84 @@
+.system-info {
+  width: min(100% - 40px, 920px);
+  margin-inline: auto;
+  padding: clamp(25px, 5vw, 54px) 0 104px;
+  color: #e6edf8;
+}
+.system-info h2 {
+  margin: 0;
+  color: #fff4d7;
+  font: 800 clamp(1.65rem, 3.5vw, 2.6rem)/1.15 Manrope, sans-serif;
+  letter-spacing: -.035em;
+}
+.system-info .info-tabs {
+  display: grid;
+  gap: 14px;
+  margin-top: clamp(1.35rem, 3vw, 2.25rem);
+}
+.system-info details {
+  overflow: hidden;
+  border: 1px solid #ebf2ff38;
+  border-radius: 16px;
+  background: #07172fe8;
+}
+.system-info summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 64px;
+  padding: 1rem clamp(1rem, 3vw, 1.75rem);
+  color: #fff3d9;
+  cursor: pointer;
+  list-style: none;
+  font: 800 1rem/1.4 Manrope, sans-serif;
+}
+.system-info summary::-webkit-details-marker { display: none; }
+.system-info summary::after { content: "+"; color: #f7d68f; font-size: 1.35rem; }
+.system-info details[open] summary::after { content: "−"; }
+.system-info summary:hover, .system-info details[open] summary { background: #ffffff0d; }
+.system-info summary:focus-visible { outline: 2px solid #f7d68f; outline-offset: -3px; }
+.system-heading, .system-grid dt { display: flex; align-items: center; gap: .75rem; }
+.system-icon {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 2.2rem;
+  height: 2.2rem;
+  place-items: center;
+  border: 1px solid #f7d68f55;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #ffe5a726, #f7d68f0b);
+  color: #ffdf9a;
+}
+.system-icon svg {
+  width: 1.22rem;
+  height: 1.22rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.system-grid .system-icon { width: 1.9rem; height: 1.9rem; border-radius: 8px; }
+.system-grid .system-icon svg { width: 1.05rem; height: 1.05rem; }
+.system-panel { padding: clamp(1.25rem, 3vw, 2rem); line-height: 1.65; }
+.system-panel .panel-intro { margin: 0 0 1.25rem; max-width: 68ch; }
+.system-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+}
+.system-grid > div {
+  padding: 1rem 1.15rem 1.2rem;
+  border: 1px solid #ebf2ff26;
+  border-radius: 12px;
+  background: #dce8ff0b;
+}
+.system-grid dt { color: #ffdf9a; font: 800 1rem/1.4 Manrope, sans-serif; }
+.system-grid dd { margin: .55rem 0 0; }
+.system-contact { margin: 1.25rem 0 0; }
+.system-contact a { color: #ffdf9a; text-underline-offset: 4px; }
+@media (max-width: 640px) {
+  .system-grid { grid-template-columns: 1fr; }
+}
